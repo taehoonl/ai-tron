@@ -1,0 +1,20 @@
+Exercise 1:
+
+type ’a node = Node of ’a data refand ’a data = Data of ’a | Pointer of ’a*’a node ref
+
+
+Each node will have a table for "Versions" and "Back-Pointers". Each entry in "Versions" will contain 
+	
+1. Version #
+2. Pointer to the data for the corresponding Version #
+
+Each entry in "Back-Pointers" will contain
+
+1. Version #
+2. Back pointer to the data for the corresponding Version #
+
+"Log" 
+
+
+cUPPER_BOUND will be used to determine the block size for each entry table. The number of entries will be determined by (cUPPER_BOUND/sizeof('a, version)). To make sure that the size of back-pointer and log sections of each node don't get excessively large, you can create a indirect pointer to another block size of cUPPER_BOUND as the last entry of the section, which will contain more entries.
+
